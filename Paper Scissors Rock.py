@@ -1,42 +1,27 @@
-#! usr/bin/python3
 import random
 
+while True:
+    user_action = input("Enter a choice (rock, paper, scissors): ")
+    possible_actions = ["rock", "paper", "scissors"]
+    computer_action = random.choice(possible_actions)
+    print(f"You chose {user_action}, computer chose {computer_action}.")
 
-def game():
-
-    computer_count = 0
-    user_count = 0
-
-    while True:
-        base_choice = ['scissors', 'paper', 'rock']
-        computer_choice = random.choice(base_choice)
-
-        user_choice = input('(scissors, paper, rock) Type your choice: ').strip().lower()
-        print()
-        computer_wins = 'The computer wins!'
-        you_win = 'You win!'
-
-        print(f'You played {user_choice}, the computer played {computer_choice}')
-        if user_choice == 'scissors' and computer_choice == 'rock' or \
-           user_choice == 'paper' and computer_choice == 'scissors' or \
-           user_choice == 'rock' and computer_choice == 'paper':
-            print(computer_wins)
-            computer_count += 1
-
-        elif user_choice == 'rock' and computer_choice == 'scissors' or \
-            user_choice == 'scissors' and computer_choice == 'paper' or \
-                user_choice == 'paper' and computer_choice == 'rock':
-                print(you_win)
-                user_count += 1
-
+    if user_action == computer_action:
+        print(f"Both players selected {user_action}. It's a tie")
+    elif user_action == "rock":
+        if computer_action == "scissors":
+            print("Rock beats scissors You win")
         else:
-            if user_choice == computer_choice:
-                print('Its a draw!')
-                computer_count += 1
-                user_count += 1
+            print("Paper beats rock You lose")
+    elif user_action == "paper":
+        if computer_action == "rock":
+            print("Paper beats rock You win")
+        else:
+            print("Scissors beats paper You lose")
+    elif user_action == "scissors":
+        if computer_action == "paper":
+            print("Scissors beats paper You win")
+        else:
+            print("Rock beats scissors You lose")
 
-        print(f'Computer: {computer_count} - You: {user_count}')
-        print()
 
-
-game()
